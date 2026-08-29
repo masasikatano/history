@@ -9,7 +9,7 @@ const THRESHOLDS = {
 };
 
 const SERIES_ORDER = ["sp500", "nikkei", "usdjpy", "us10y"];
-const VIEW_START = "1971-01-01";
+const VIEW_START = "2000-01-01";
 const VIEW_START_MS = Date.parse(VIEW_START);
 const charts = {};
 let events = [];
