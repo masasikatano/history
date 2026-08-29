@@ -1,6 +1,6 @@
 /* Detection thresholds (editable). */
 const THRESHOLDS = {
-  equityDrawdown: 0.2,
+  equityDrawdown: 0.1,
   fxWindow: 60,
   fxPct: 0.1,
   yieldWindow: 60,
