@@ -120,7 +120,24 @@ function detectWindowMoves(points, frequency, absThreshold, kindPct) {
     }
   }
   flush();
-  return out;
+  return mergeOverlappingEpisodes(out);
+}
+
+/** Same-direction window hits that overlap on the calendar are one episode. */
+function mergeOverlappingEpisodes(episodes) {
+  if (episodes.length <= 1) return episodes;
+  const sorted = [...episodes].sort((a, b) => a.start.localeCompare(b.start) || a.end.localeCompare(b.end));
+  const merged = [];
+  for (const ep of sorted) {
+    const last = merged[merged.length - 1];
+    if (last && last.kind === ep.kind && ep.start <= last.end) {
+      if (ep.end > last.end) last.end = ep.end;
+      if (Math.abs(ep.magnitude) > Math.abs(last.magnitude)) last.magnitude = ep.magnitude;
+    } else {
+      merged.push({ ...ep });
+    }
+  }
+  return merged;
 }
 
 function detectSeries(series) {
