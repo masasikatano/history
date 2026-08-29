@@ -1,0 +1,82 @@
+[
+  {
+    "start": "1929-10-24",
+    "end": "1933-03-04",
+    "title": "世界恐慌",
+    "series": ["sp500"],
+    "source": "Federal Reserve History; NYSE crash week of 24 Oct 1929; US banking holiday March 1933",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/great-depression"
+  },
+  {
+    "start": "1979-10-06",
+    "end": "1982-08-17",
+    "title": "ボルカー・ショック",
+    "series": ["us10y", "sp500"],
+    "source": "Fed Saturday Night Special 6 Oct 1979; 1980–82 recessions; Aug 1982 bull-market turn",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/anti-inflation-measures"
+  },
+  {
+    "start": "1985-09-22",
+    "end": "1988-12-31",
+    "title": "プラザ合意後の円高",
+    "series": ["usdjpy"],
+    "source": "Plaza Accord 22 Sep 1985; subsequent USD/JPY decline through late 1980s",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/plaza-accord"
+  },
+  {
+    "start": "1987-10-19",
+    "end": "1987-12-31",
+    "title": "ブラックマンデー",
+    "series": ["sp500", "nikkei"],
+    "source": "19 Oct 1987 crash; recovery into year-end 1987",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1987"
+  },
+  {
+    "start": "1997-07-02",
+    "end": "1998-12-31",
+    "title": "アジア通貨危機",
+    "series": ["nikkei", "usdjpy"],
+    "source": "Thai baht float 2 Jul 1997; regional crisis through 1998",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/asian-financial-crisis"
+  },
+  {
+    "start": "2000-03-10",
+    "end": "2002-10-09",
+    "title": "ITバブル崩壊",
+    "series": ["sp500", "nikkei"],
+    "source": "NASDAQ peak 10 Mar 2000; S&P 500 trough 9 Oct 2002",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/stock-market-crash-of-2000-02"
+  },
+  {
+    "start": "2008-09-15",
+    "end": "2009-03-09",
+    "title": "リーマン・ショック",
+    "series": ["sp500", "nikkei", "usdjpy", "us10y"],
+    "source": "Lehman Brothers bankruptcy 15 Sep 2008; S&P 500 trough 9 Mar 2009",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath"
+  },
+  {
+    "start": "2010-04-23",
+    "end": "2012-07-26",
+    "title": "欧州債務危機",
+    "series": ["sp500", "us10y"],
+    "source": "First Greek EU/IMF programme request Apr 2010; ECB OMT speech 26 Jul 2012",
+    "sourceUrl": "https://www.ecb.europa.eu/press/key/date/2012/html/sp120726.en.html"
+  },
+  {
+    "start": "2020-02-19",
+    "end": "2020-03-23",
+    "title": "コロナショック",
+    "series": ["sp500", "nikkei", "usdjpy", "us10y"],
+    "source": "S&P 500 peak 19 Feb 2020; trough 23 Mar 2020",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/coronavirus-covid-19-pandemic"
+  },
+  {
+    "start": "2022-03-01",
+    "end": "2022-10-21",
+    "title": "急激な円安局面（2022年）",
+    "series": ["usdjpy", "us10y"],
+    "source": "USD/JPY rise amid Fed hiking; Ministry of Finance yen intervention around 21–24 Oct 2022",
+    "sourceUrl": "https://www.mof.go.jp/english/policy/international_policy/economic_report/"
+  }
+]

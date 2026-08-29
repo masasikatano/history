@@ -1,0 +1,51 @@
+{
+  "snapshotDate": "2026-08-29",
+  "note": "系列ごとに取得可能な最長期間。補間・つなぎはしない。",
+  "sources": [
+    {
+      "id": "sp500",
+      "name": "S&P500",
+      "source": "Robert Shiller, Irrational Exuberance data (S&P Composite)",
+      "sourceUrl": "http://www.econ.yale.edu/~shiller/data.htm",
+      "license": "公開研究データ。再配布時は出典を明示。",
+      "frequency": "monthly",
+      "start": "1871-01-01",
+      "end": "2026-07-01",
+      "count": 1867
+    },
+    {
+      "id": "nikkei",
+      "name": "日経平均",
+      "source": "Nikkei Industry Research Institute via FRED (NIKKEI225)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/NIKKEI225",
+      "license": "FRED 利用規約に従う。出典明示。",
+      "frequency": "daily",
+      "start": "1949-05-16",
+      "end": "2026-08-28",
+      "count": 19189
+    },
+    {
+      "id": "usdjpy",
+      "name": "ドル円",
+      "source": "Board of Governors of the Federal Reserve System via FRED (DEXJPUS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/DEXJPUS",
+      "license": "FRED 利用規約に従う。出典明示。",
+      "frequency": "daily",
+      "start": "1971-01-04",
+      "end": "2026-08-21",
+      "count": 13946
+    },
+    {
+      "id": "us10y",
+      "name": "米10年国債利回り",
+      "source": "Board of Governors of the Federal Reserve System via FRED (DGS10)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
+      "license": "FRED 利用規約に従う。出典明示。",
+      "frequency": "daily",
+      "start": "1962-01-02",
+      "end": "2026-08-27",
+      "count": 16149
+    }
+  ],
+  "disclaimer": "本サイトは学習用の歴史的チャートです。投資助言、売買推奨、ポートフォリオ提案ではありません。ライブ価格は表示しません。"
+}
