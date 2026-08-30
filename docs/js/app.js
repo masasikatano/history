@@ -9,19 +9,28 @@ const THRESHOLDS = {
 };
 
 const SERIES_ORDER = ["sp500", "nikkei", "usdjpy", "us10y"];
-const VIEW_START = "2000-01-01";
-const VIEW_START_MS = Date.parse(VIEW_START);
+const VIEW_START = "2015-01-01";
+
+function viewStart(_seriesId) {
+  return VIEW_START;
+}
+
+function viewStartMs(seriesId) {
+  return Date.parse(viewStart(seriesId));
+}
+
 const charts = {};
 let events = [];
 let detectionsBySeries = {};
 let activeEvent = null;
 
-function inView(endDate) {
-  return endDate >= VIEW_START;
+function inView(endDate, seriesId) {
+  return endDate >= viewStart(seriesId);
 }
 
-function pointsFromView(points) {
-  return points.filter((p) => p.date >= VIEW_START);
+function pointsFromView(points, seriesId) {
+  const start = viewStart(seriesId);
+  return points.filter((p) => p.date >= start);
 }
 
 async function loadJson(path) {
@@ -193,10 +202,11 @@ function annotationsFor(seriesId, detections) {
       (!activeEvent.series ||
         activeEvent.series.length === 0 ||
         activeEvent.series.includes(seriesId));
-    if (d.end < VIEW_START) return;
+    const start = viewStart(seriesId);
+    if (d.end < start) return;
     anns[`band${i}`] = {
       type: "box",
-      xMin: Math.max(Date.parse(d.start), VIEW_START_MS),
+      xMin: Math.max(Date.parse(d.start), viewStartMs(seriesId)),
       xMax: Date.parse(d.end),
       backgroundColor: bandColor(i, highlight),
       borderWidth: 0,
@@ -210,19 +220,20 @@ function renderChart(series, detections) {
   const block = document.createElement("article");
   block.className = "chart-block";
   block.id = `chart-${series.id}`;
-  const visible = pointsFromView(series.points);
+  const visible = pointsFromView(series.points, series.id);
+  const start = viewStart(series.id);
   const end = visible[visible.length - 1]?.date ?? series.points[series.points.length - 1]?.date ?? "—";
   const freqLabel = series.frequency === "daily" ? "日次" : "月次";
   block.innerHTML = `
     <h2>${series.name}</h2>
-    <p class="meta-line">表示 ${VIEW_START} 〜 ${end} ／ ${freqLabel} ／ ${series.source}</p>
+    <p class="meta-line">表示 ${start} 〜 ${end} ／ ${freqLabel} ／ ${series.source}</p>
     <div class="chart-wrap"><canvas id="cv-${series.id}"></canvas></div>
     <ul class="episodes" id="ep-${series.id}"></ul>
   `;
   host.appendChild(block);
 
   const ep = block.querySelector(`#ep-${series.id}`);
-  detections.filter((d) => inView(d.end)).forEach((d) => {
+  detections.filter((d) => inView(d.end, series.id)).forEach((d) => {
     const titles = matchingTitles(d);
     const li = document.createElement("li");
     if (titles.length) {
@@ -268,7 +279,7 @@ function renderChart(series, detections) {
       scales: {
         x: {
           type: "time",
-          min: VIEW_START_MS,
+          min: viewStartMs(series.id),
           time: { unit: "year" },
           ticks: { color: "#93a1b0", maxRotation: 0 },
           grid: { color: "#2a3542" },
@@ -317,7 +328,7 @@ function renderTimeline() {
 
 function renderFooter(meta) {
   document.getElementById("snapshot-line").textContent =
-    `データ取得日（スナップショット）: ${meta.snapshotDate}。チャート表示は ${VIEW_START} 以降で固定。保管データは系列ごとの最長期間。`;
+    `データ取得日（スナップショット）: ${meta.snapshotDate}。チャート表示は ${VIEW_START} 以降で揃える。保管データは系列ごとの最長期間。`;
   const tbody = document.querySelector("#series-table tbody");
   tbody.innerHTML = "";
   meta.sources.forEach((s) => {
@@ -342,7 +353,7 @@ async function main() {
 
   for (const id of SERIES_ORDER) {
     const series = await loadJson(`data/${id}.json`);
-    const dets = detectSeries({ ...series, points: pointsFromView(series.points) });
+    const dets = detectSeries({ ...series, points: pointsFromView(series.points, series.id) });
     detectionsBySeries[id] = dets;
     renderChart(series, dets);
   }

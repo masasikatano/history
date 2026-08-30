@@ -48,11 +48,35 @@
     "sourceUrl": "https://www.federalreservehistory.org/essays/stock-market-crash-of-2000-02"
   },
   {
+    "start": "2003-05-19",
+    "end": "2003-09-11",
+    "title": "イラク戦争後の景気回復期待による金利上昇（2003年）",
+    "series": ["us10y"],
+    "source": "Easing of Iraq war risk and rising growth expectations; 10Y Treasury yield rise mid-2003",
+    "sourceUrl": "https://www.federalreserve.gov/econres/feds/the-effects-of-war-risk-on-us-financial-markets.htm"
+  },
+  {
+    "start": "2003-08-04",
+    "end": "2003-10-29",
+    "title": "イラク戦争後の円高リスクオフ（2003年）",
+    "series": ["usdjpy"],
+    "source": "Post-Iraq-war risk-off yen appreciation amid Middle East uncertainty",
+    "sourceUrl": "https://www.federalreserve.gov/econres/feds/the-effects-of-war-risk-on-us-financial-markets.htm"
+  },
+  {
     "start": "2004-03-10",
     "end": "2004-06-14",
     "title": "2004年FRB利上げサイクル",
     "series": ["us10y"],
     "source": "FOMC began raising the federal funds rate in June 2004; 10Y yield rise in anticipation",
+    "sourceUrl": "https://www.federalreserve.gov/econresdata/notes/feds-notes/2015/effects-of-fomc-communications-before-policy-tightening-in-1994-and-2004-20150924.html"
+  },
+  {
+    "start": "2005-09-06",
+    "end": "2005-12-07",
+    "title": "FRB利上げサイクル中の円安（2005年）",
+    "series": ["usdjpy"],
+    "source": "Fed tightening cycle and dollar strength; yen depreciation in late 2005",
     "sourceUrl": "https://www.federalreserve.gov/econresdata/notes/feds-notes/2015/effects-of-fomc-communications-before-policy-tightening-in-1994-and-2004-20150924.html"
   },
   {
@@ -70,6 +94,14 @@
     "series": ["sp500", "nikkei", "usdjpy", "us10y"],
     "source": "Lehman Brothers bankruptcy 15 Sep 2008; S&P 500 trough 9 Mar 2009",
     "sourceUrl": "https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath"
+  },
+  {
+    "start": "2009-03-12",
+    "end": "2009-06-18",
+    "title": "リーマン・ショック後の景気回復期待（2009年）",
+    "series": ["us10y"],
+    "source": "Risk-on recovery after the financial-crisis trough; 10Y Treasury yield rebound",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/speech/kohn20100513a.htm"
   },
   {
     "start": "2010-04-23",
@@ -114,7 +146,7 @@
   {
     "start": "2018-01-23",
     "end": "2018-07-05",
-    "title": "2018年の調整（円高・米金利上昇）",
+    "title": "2018年の日経調整（円高・米金利上昇）",
     "series": ["nikkei"],
     "source": "Nikkei correction amid yen appreciation and rising US Treasury yields in early 2018",
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2018-07-mpr-part2.htm"
@@ -122,9 +154,9 @@
   {
     "start": "2018-09-01",
     "end": "2019-01-01",
-    "title": "2018年第四半期の調整",
+    "title": "クリスマスショック",
     "series": ["sp500"],
-    "source": "S&P 500 correction in Q4 2018 amid Fed rate hikes and trade tensions",
+    "source": "S&P 500 correction in Q4 2018 amid Fed rate hikes and trade tensions; also called Christmas Eve massacre",
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2018-07-mpr-part2.htm"
   },
   {
@@ -138,7 +170,7 @@
   {
     "start": "2021-02-16",
     "end": "2021-08-20",
-    "title": "コロナ禍一時回復後の調整（2021年）",
+    "title": "2021年の日経調整（コロナ禍の一時回復後）",
     "series": ["nikkei"],
     "source": "Nikkei adjustment after the initial post-pandemic rebound in 2021",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO/Issues/2021/07/27/weo-update-july-2021"
@@ -146,7 +178,7 @@
   {
     "start": "2021-12-01",
     "end": "2023-05-01",
-    "title": "2022年ベアマーケット",
+    "title": "2022年ベアマーケット（インフレ・利上げ）",
     "series": ["sp500", "nikkei"],
     "source": "Inflation surge and rapid Fed tightening; global equity bear market 2022",
     "sourceUrl": "https://www.federalreserve.gov/publications/2022-ar-monetary-policy.htm"
@@ -158,6 +190,14 @@
     "series": ["usdjpy", "us10y"],
     "source": "USD/JPY rise amid Fed hiking; Ministry of Finance yen intervention around 21–24 Oct 2022",
     "sourceUrl": "https://www.mof.go.jp/english/policy/international_policy/economic_report/"
+  },
+  {
+    "start": "2023-04-05",
+    "end": "2023-06-30",
+    "title": "植田和男就任後の円安（2023年）",
+    "series": ["usdjpy"],
+    "source": "Yen depreciation after BOJ Governor Ueda took office; expectations of continued accommodative policy",
+    "sourceUrl": "https://www.bis.org/review/r240503c.htm"
   },
   {
     "start": "2023-07-13",
@@ -182,5 +222,21 @@
     "series": ["sp500"],
     "source": "Tariff announcements on Canada, Mexico and China in early 2025; equity market correction",
     "sourceUrl": "https://www.whitehouse.gov/fact-sheets/2025/02/fact-sheet-president-donald-j-trump-imposes-tariffs-on-imports-from-canada-mexico-and-china/"
+  },
+  {
+    "start": "2026-02-27",
+    "end": "2026-04-02",
+    "title": "2026年春の調整（仮）",
+    "series": ["nikkei"],
+    "source": "Recent Nikkei drawdown in spring 2026; event name is tentative pending historical consensus",
+    "sourceUrl": ""
+  },
+  {
+    "start": "2026-06-25",
+    "end": "2026-08-04",
+    "title": "2026年夏の調整（仮）",
+    "series": ["nikkei"],
+    "source": "Recent Nikkei drawdown in summer 2026; event name is tentative pending historical consensus",
+    "sourceUrl": ""
   }
 ]
