@@ -355,11 +355,11 @@ def default_events() -> list[dict]:
             "sourceUrl": "https://www.federalreservehistory.org/essays/coronavirus-covid-19-pandemic",
         },
         {
-            "start": "2022-03-01",
-            "end": "2022-09-21",
-            "title": "FRB利上げによる円安",
+            "start": "2022-01-13",
+            "end": "2022-11-09",
+            "title": "The Great Tightening",
             "series": ["usdjpy", "us10y"],
-            "source": "USD/JPY rise amid Fed hiking from March 2022 and BOJ easing; yen sold off into the 144 area before the first intervention",
+            "source": "Inflation surge and Fed hiking cycle from 2022; BOJ YCC kept Japanese yields pinned, widening the US–Japan rate gap. USD/JPY and UST 10Y both advanced in two legs around a mid-year pause. Yen-buying intervention in Sep–Oct 2022 is a separate USD/JPY event, not a driver of the UST move",
             "sourceUrl": "https://www.federalreserve.gov/publications/2022-ar-monetary-policy.htm",
         },
         {
