@@ -168,11 +168,24 @@ function detectSeries(series) {
   return [];
 }
 
+function eventAppliesToSeries(ev, seriesId) {
+  return !ev.series || ev.series.length === 0 || ev.series.includes(seriesId);
+}
+
 function matchingTitles(det) {
-  return events.filter((ev) => {
-    const applies = !ev.series || ev.series.length === 0 || ev.series.includes(det.series);
-    return applies && overlaps(det.start, det.end, ev.start, ev.end);
-  });
+  return events.filter(
+    (ev) => eventAppliesToSeries(ev, det.series) && overlaps(det.start, det.end, ev.start, ev.end)
+  );
+}
+
+function isoDateFromMs(ms) {
+  return new Date(ms).toISOString().slice(0, 10);
+}
+
+function titlesAtDate(seriesId, date) {
+  return events.filter(
+    (ev) => eventAppliesToSeries(ev, seriesId) && date >= ev.start && date <= ev.end
+  );
 }
 
 function formatMag(seriesId, mag, kind) {
@@ -267,12 +280,18 @@ function renderChart(series, detections) {
       maintainAspectRatio: false,
       animation: false,
       parsing: false,
+      interaction: { mode: "nearest", axis: "x", intersect: false },
       plugins: {
         legend: { display: false },
         annotation: { annotations: annotationsFor(series.id, detections) },
         tooltip: {
           callbacks: {
+            title: (items) => (items.length ? isoDateFromMs(items[0].parsed.x) : ""),
             label: (item) => `${item.parsed.y} ${unit}`,
+            afterBody: (items) => {
+              if (!items.length) return [];
+              return titlesAtDate(series.id, isoDateFromMs(items[0].parsed.x)).map((ev) => ev.title);
+            },
           },
         },
       },
