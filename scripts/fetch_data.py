@@ -356,10 +356,18 @@ def default_events() -> list[dict]:
         },
         {
             "start": "2022-03-01",
-            "end": "2022-10-21",
-            "title": "急激な円安局面（2022年）",
+            "end": "2022-09-21",
+            "title": "FRB利上げによる円安",
             "series": ["usdjpy", "us10y"],
-            "source": "USD/JPY rise amid Fed hiking; Ministry of Finance yen intervention around 21–24 Oct 2022",
+            "source": "USD/JPY rise amid Fed hiking from March 2022 and BOJ easing; yen sold off into the 144 area before the first intervention",
+            "sourceUrl": "https://www.federalreserve.gov/publications/2022-ar-monetary-policy.htm",
+        },
+        {
+            "start": "2022-09-22",
+            "end": "2022-10-24",
+            "title": "24年ぶり円買い介入（2022年）",
+            "series": ["usdjpy"],
+            "source": "First yen-buying intervention in 24 years on 22 Sep 2022; follow-up around 21–24 Oct 2022",
             "sourceUrl": "https://www.mof.go.jp/english/policy/international_policy/economic_report/",
         },
     ]

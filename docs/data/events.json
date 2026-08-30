@@ -170,9 +170,9 @@
   {
     "start": "2021-02-16",
     "end": "2021-08-20",
-    "title": "2021年の日経調整（コロナ禍の一時回復後）",
+    "title": "コロナ第5波による日経調整（2021年）",
     "series": ["nikkei"],
-    "source": "Nikkei adjustment after the initial post-pandemic rebound in 2021",
+    "source": "Nikkei correction during Japan's fifth COVID-19 wave in 2021 (summer peak of infections; Olympics-period restrictions and supply-chain strain)",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO/Issues/2021/07/27/weo-update-july-2021"
   },
   {
@@ -185,10 +185,18 @@
   },
   {
     "start": "2022-03-01",
-    "end": "2022-10-21",
-    "title": "急激な円安局面（2022年）",
+    "end": "2022-09-21",
+    "title": "FRB利上げによる円安",
     "series": ["usdjpy", "us10y"],
-    "source": "USD/JPY rise amid Fed hiking; Ministry of Finance yen intervention around 21–24 Oct 2022",
+    "source": "USD/JPY rise amid Fed hiking from March 2022 and BOJ easing; yen sold off into the 144 area before the first intervention",
+    "sourceUrl": "https://www.federalreserve.gov/publications/2022-ar-monetary-policy.htm"
+  },
+  {
+    "start": "2022-09-22",
+    "end": "2022-10-24",
+    "title": "24年ぶり円買い介入（2022年）",
+    "series": ["usdjpy"],
+    "source": "First yen-buying intervention in 24 years on 22 Sep 2022; follow-up around 21–24 Oct 2022",
     "sourceUrl": "https://www.mof.go.jp/english/policy/international_policy/economic_report/"
   },
   {
@@ -209,10 +217,18 @@
   },
   {
     "start": "2024-06-18",
-    "end": "2025-06-13",
-    "title": "円キャリートレード解消（2024年）",
+    "end": "2024-07-31",
+    "title": "円キャリー積み上がりによる円安（2024年）",
+    "series": ["usdjpy"],
+    "source": "Yen-funded carry build-up; USD/JPY rose through 160 in June–July 2024 as the US–Japan rate gap stayed wide",
+    "sourceUrl": "https://www.bis.org/publ/bisbull90.htm"
+  },
+  {
+    "start": "2024-07-31",
+    "end": "2024-08-06",
+    "title": "令和のブラックマンデー",
     "series": ["usdjpy", "nikkei"],
-    "source": "BOJ rate hike and yen carry trade unwind; August 2024 market turbulence",
+    "source": "BOJ hike 31 Jul 2024 and yen carry unwind; Nikkei record one-day drop 5 Aug 2024 (also called Reiwa Black Monday)",
     "sourceUrl": "https://www.bis.org/publ/bisbull90.htm"
   },
   {
@@ -226,17 +242,17 @@
   {
     "start": "2026-02-27",
     "end": "2026-04-02",
-    "title": "2026年春の調整（仮）",
+    "title": "2026年イラン戦争ショック",
     "series": ["nikkei"],
-    "source": "Recent Nikkei drawdown in spring 2026; event name is tentative pending historical consensus",
-    "sourceUrl": ""
+    "source": "US–Israel strikes on Iran from 28 Feb 2026; Hormuz disruption and oil shock; Nikkei was among the hardest-hit major indices",
+    "sourceUrl": "https://www.tradingview.com/news/invezz:faaed0905094b:0-from-best-to-worst-how-nikkei-s-2026-rally-collapsed-with-iran-war/"
   },
   {
     "start": "2026-06-25",
     "end": "2026-08-04",
-    "title": "2026年夏の調整（仮）",
+    "title": "キオクシアショック",
     "series": ["nikkei"],
-    "source": "Recent Nikkei drawdown in summer 2026; event name is tentative pending historical consensus",
-    "sourceUrl": ""
+    "source": "Nikkei peak 25 Jun 2026; AI/semiconductor unwind led by Kioxia (limit-down 28 Jul); Nikkei vs TOPIX divergence",
+    "sourceUrl": "https://www.reuters.com/world/asia-pacific/japans-nikkei-slides-into-correction-zone-tech-selloff-middle-east-conflict-2026-07-17/"
   }
 ]
