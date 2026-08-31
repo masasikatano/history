@@ -174,6 +174,16 @@
     "sourceUrl": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2014/k141031a.pdf"
   },
   {
+    "start": "2015-05-28",
+    "end": "2015-09-04",
+    "title": "チャイナ・ショック（2015）",
+    "series": [
+      "vix"
+    ],
+    "source": "Shanghai stock market turbulence summer 2015; VIX spike as Chinese slowdown fears spread",
+    "sourceUrl": "https://www.uscc.gov/sites/default/files/Research/China%E2%80%99s%20Stock%20Market%20Collapse%20and%20Government%E2%80%99s%20Response.pdf"
+  },
+  {
     "start": "2015-06-24",
     "end": "2017-04-21",
     "title": "チャイナ・ショック（2015）、上海サーキットブレーカー混乱（2016）",
@@ -195,6 +205,16 @@
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2017-02-mpr-part2.htm"
   },
   {
+    "start": "2017-11-07",
+    "end": "2018-04-10",
+    "title": "VIXショック",
+    "series": [
+      "vix"
+    ],
+    "source": "Prolonged low volatility unwind; 5 Feb 2018 VIX spike and inverse-VIX ETP termination",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2018_VIX_event"
+  },
+  {
     "start": "2018-01-23",
     "end": "2018-07-05",
     "title": "2018年の日経調整（円高・米金利上昇）",
@@ -206,6 +226,16 @@
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2018-07-mpr-part2.htm"
   },
   {
+    "start": "2018-07-18",
+    "end": "2018-12-31",
+    "title": "クリスマスショック",
+    "series": [
+      "vix"
+    ],
+    "source": "VIX surge in Q4 2018 amid Fed rate hikes and trade tensions; equity correction into year-end",
+    "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2018-07-mpr-part2.htm"
+  },
+  {
     "start": "2018-09-01",
     "end": "2019-01-01",
     "title": "クリスマスショック",
@@ -214,6 +244,16 @@
     ],
     "source": "S&P 500 correction in Q4 2018 amid Fed rate hikes and trade tensions; also called Christmas Eve massacre",
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2018-07-mpr-part2.htm"
+  },
+  {
+    "start": "2019-11-25",
+    "end": "2020-05-15",
+    "title": "コロナショック",
+    "series": [
+      "vix"
+    ],
+    "source": "VIX spike from late 2019 through COVID-19 market turmoil; peak volatility in March 2020",
+    "sourceUrl": "https://www.federalreservehistory.org/essays/coronavirus-covid-19-pandemic"
   },
   {
     "start": "2020-02-19",
@@ -294,6 +334,16 @@
     "sourceUrl": "https://www.federalreserve.gov/econres/notes/feds-notes/the-treasury-tantrum-of-2023-20240903.html"
   },
   {
+    "start": "2024-05-13",
+    "end": "2024-08-07",
+    "title": "令和のブラックマンデー",
+    "series": [
+      "vix"
+    ],
+    "source": "Yen carry unwind and global risk-off; VIX spike ahead of the 5 Aug 2024 Nikkei crash",
+    "sourceUrl": "https://www.bis.org/publ/bisbull90.htm"
+  },
+  {
     "start": "2024-06-18",
     "end": "2024-07-31",
     "title": "円キャリー積み上がりによる円安（2024年）",
@@ -316,6 +366,16 @@
     "sourceUrl": "https://www.bis.org/publ/bisbull90.htm"
   },
   {
+    "start": "2024-12-12",
+    "end": "2025-04-21",
+    "title": "トランプ関税ショック（2025）",
+    "series": [
+      "vix"
+    ],
+    "source": "VIX elevated from late 2024 through the Apr 2025 'Liberation Day' tariff announcements and partial pause",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2025_stock_market_crash"
+  },
+  {
     "start": "2025-02-01",
     "end": "2025-04-01",
     "title": "トランプ関税発動による調整（2025年）",
@@ -336,6 +396,16 @@
     ],
     "source": "Trump 'Liberation Day' reciprocal tariffs announced 2 Apr 2025; global equity crash; Nikkei trough 7 Apr; Trump paused most tariffs 9 Apr",
     "sourceUrl": "https://en.wikipedia.org/wiki/2025_stock_market_crash"
+  },
+  {
+    "start": "2026-01-02",
+    "end": "2026-03-30",
+    "title": "2026年イラン戦争ショック",
+    "series": [
+      "vix"
+    ],
+    "source": "US–Israel strikes on Iran from late February 2026; oil shock and risk-off drove a sustained VIX spike",
+    "sourceUrl": "https://www.tradingview.com/news/invezz:faaed0905094b:0-from-best-to-worst-how-nikkei-s-2026-rally-collapsed-with-iran-war/"
   },
   {
     "start": "2026-02-27",
