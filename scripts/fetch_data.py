@@ -251,19 +251,19 @@ def main() -> int:
         "points": us10y_points,
     }
 
-    print("Fetching BOJ policy rate (FRED IRSTCB01JPM156N)…")
-    boj_points = fred_observations("IRSTCB01JPM156N", fred_key)
-    boj_rate = {
-        "id": "boj_rate",
-        "name": "日銀政策金利",
+    print("Fetching Japan 10Y government bond yield (FRED IRLTLT01JPM156N)…")
+    jp10y_points = fred_observations("IRLTLT01JPM156N", fred_key)
+    jp10y = {
+        "id": "jp10y",
+        "name": "日本国債10年物金利",
         "frequency": "monthly",
-        "source": "Organization for Economic Co-operation and Development via FRED (IRSTCB01JPM156N)",
-        "sourceUrl": "https://fred.stlouisfed.org/series/IRSTCB01JPM156N",
+        "source": "Organization for Economic Co-operation and Development via FRED (IRLTLT01JPM156N)",
+        "sourceUrl": "https://fred.stlouisfed.org/series/IRLTLT01JPM156N",
         "license": "FRED 利用規約に従う。出典明示。",
-        "points": boj_points,
+        "points": jp10y_points,
     }
 
-    series_list = [sp, nikkei, japan_stock, usdjpy, us10y, boj_rate]
+    series_list = [sp, nikkei, japan_stock, usdjpy, us10y, jp10y]
     for s in series_list:
         write_json(DOCS_DATA / f"{s['id']}.json", s)
         start, end = range_of(s["points"])

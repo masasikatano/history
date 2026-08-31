@@ -8,7 +8,7 @@ const THRESHOLDS = {
   monthlyWindowEquiv: 3,
 };
 
-const SERIES_ORDER = ["sp500", "nikkei", "japan_stock", "usdjpy", "us10y", "boj_rate"];
+const SERIES_ORDER = ["sp500", "nikkei", "japan_stock", "usdjpy", "us10y", "jp10y"];
 const VIEW_START = "2015-01-01";
 
 function viewStart(_seriesId) {
@@ -159,7 +159,7 @@ function detectSeries(series) {
       series: series.id,
     }));
   }
-  if (series.id === "us10y" || series.id === "boj_rate") {
+  if (series.id === "us10y" || series.id === "jp10y") {
     return detectWindowMoves(series.points, series.frequency, THRESHOLDS.yieldBp, false).map((d) => ({
       ...d,
       series: series.id,
@@ -196,7 +196,7 @@ function formatMag(seriesId, mag, kind) {
     const sign = mag > 0 ? "+" : "";
     return `約60営業日で ${sign}${(mag * 100).toFixed(1)}%`;
   }
-  const windowLabel = seriesId === "boj_rate" ? "約3ヶ月で" : "約60営業日で";
+  const windowLabel = seriesId === "jp10y" ? "約3ヶ月で" : "約60営業日で";
   const bp = mag * 100;
   const sign = bp > 0 ? "+" : "";
   return `${windowLabel} ${sign}${bp.toFixed(0)}bp`;
@@ -261,7 +261,7 @@ function renderChart(series, detections) {
 
   const ctx = document.getElementById(`cv-${series.id}`);
   const unit =
-    series.id === "us10y" || series.id === "boj_rate"
+    series.id === "us10y" || series.id === "jp10y"
       ? "％"
       : series.id === "usdjpy"
       ? "円/ドル"

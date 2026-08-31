@@ -58,15 +58,15 @@
       "count": 16149
     },
     {
-      "id": "boj_rate",
-      "name": "日銀政策金利",
-      "source": "Organization for Economic Co-operation and Development via FRED (IRSTCB01JPM156N)",
-      "sourceUrl": "https://fred.stlouisfed.org/series/IRSTCB01JPM156N",
+      "id": "jp10y",
+      "name": "日本国債10年物金利",
+      "source": "Organization for Economic Co-operation and Development via FRED (IRLTLT01JPM156N)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/IRLTLT01JPM156N",
       "license": "FRED 利用規約に従う。出典明示。",
       "frequency": "monthly",
-      "start": "1960-01-01",
-      "end": "2023-12-01",
-      "count": 768
+      "start": "1989-01-01",
+      "end": "2026-06-01",
+      "count": 450
     }
   ],
   "disclaimer": "本サイトは学習用の歴史的チャートです。投資助言、売買推奨、ポートフォリオ提案ではありません。ライブ価格は表示しません。"

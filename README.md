@@ -1,6 +1,6 @@
 # 長期マクロ履歴
 
-歴史学習用の静的サイトです。S&P500、日経平均、日本株価指数（OECD）、ドル円、米10年国債利回り、日銀政策金利を、チャート上は 2015年1月以降で揃えて示します。保管データは系列ごとの最長期間です。投資助言ではありません。
+歴史学習用の静的サイトです。S&P500、日経平均、日本株価指数（OECD）、ドル円、米10年国債利回り、日本国債10年物金利を、チャート上は 2015年1月以降で揃えて示します。保管データは系列ごとの最長期間です。投資助言ではありません。
 
 仕様は [`spec.md`](spec.md) を参照してください。
 
@@ -14,7 +14,7 @@
 python3 scripts/fetch_data.py
 ```
 
-`.env` に `FRED_API_KEY` が必要です（コミットしないこと）。日経・ドル円・米10年・日銀政策金利は FRED、S&P500 は Shiller の長期月次を使います。系列の補間やつなぎはしません。定期自動更新はしません。
+`.env` に `FRED_API_KEY` が必要です（コミットしないこと）。日経・ドル円・米10年・日本国債10年物金利は FRED、S&P500 は Shiller の長期月次を使います。系列の補間やつなぎはしません。定期自動更新はしません。
 
 ## 出典とライセンス
 
@@ -25,7 +25,7 @@ python3 scripts/fetch_data.py
 | 日本株価指数（OECD） | FRED [`SPASTT01JPM661N`](https://fred.stlouisfed.org/series/SPASTT01JPM661N) | 同上 |
 | ドル円 | FRED [`DEXJPUS`](https://fred.stlouisfed.org/series/DEXJPUS) | 同上 |
 | 米10年 | FRED [`DGS10`](https://fred.stlouisfed.org/series/DGS10) | 同上 |
-| 日銀政策金利 | FRED [`IRSTCB01JPM156N`](https://fred.stlouisfed.org/series/IRSTCB01JPM156N) | 同上 |
+| 日本国債10年物金利 | FRED [`IRLTLT01JPM156N`](https://fred.stlouisfed.org/series/IRLTLT01JPM156N) | 同上 |
 
 事件タイトルの日付は Federal Reserve History 等の公開年表に基づく概算区間です。長文解説は置きません。
 
