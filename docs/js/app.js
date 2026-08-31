@@ -8,7 +8,7 @@ const THRESHOLDS = {
   monthlyWindowEquiv: 3,
 };
 
-const SERIES_ORDER = ["sp500", "nikkei", "usdjpy", "us10y"];
+const SERIES_ORDER = ["sp500", "nikkei", "japan_stock", "usdjpy", "us10y", "boj_rate"];
 const VIEW_START = "2015-01-01";
 
 function viewStart(_seriesId) {
@@ -150,7 +150,7 @@ function mergeOverlappingEpisodes(episodes) {
 }
 
 function detectSeries(series) {
-  if (series.id === "sp500" || series.id === "nikkei") {
+  if (series.id === "sp500" || series.id === "nikkei" || series.id === "japan_stock") {
     return detectDrawdowns(series.points).map((d) => ({ ...d, series: series.id }));
   }
   if (series.id === "usdjpy") {
@@ -159,7 +159,7 @@ function detectSeries(series) {
       series: series.id,
     }));
   }
-  if (series.id === "us10y") {
+  if (series.id === "us10y" || series.id === "boj_rate") {
     return detectWindowMoves(series.points, series.frequency, THRESHOLDS.yieldBp, false).map((d) => ({
       ...d,
       series: series.id,
@@ -189,16 +189,17 @@ function titlesAtDate(seriesId, date) {
 }
 
 function formatMag(seriesId, mag, kind) {
-  if (seriesId === "sp500" || seriesId === "nikkei") {
+  if (seriesId === "sp500" || seriesId === "nikkei" || seriesId === "japan_stock") {
     return `ピーク比 −${(mag * 100).toFixed(1)}%`;
   }
   if (seriesId === "usdjpy") {
     const sign = mag > 0 ? "+" : "";
     return `約60営業日で ${sign}${(mag * 100).toFixed(1)}%`;
   }
+  const windowLabel = seriesId === "boj_rate" ? "約3ヶ月で" : "約60営業日で";
   const bp = mag * 100;
   const sign = bp > 0 ? "+" : "";
-  return `約60営業日で ${sign}${bp.toFixed(0)}bp`;
+  return `${windowLabel} ${sign}${bp.toFixed(0)}bp`;
 }
 
 function bandColor(index, active) {
@@ -259,7 +260,12 @@ function renderChart(series, detections) {
   });
 
   const ctx = document.getElementById(`cv-${series.id}`);
-  const unit = series.id === "us10y" ? "％" : series.id === "usdjpy" ? "円/ドル" : "指数";
+  const unit =
+    series.id === "us10y" || series.id === "boj_rate"
+      ? "％"
+      : series.id === "usdjpy"
+      ? "円/ドル"
+      : "指数";
   charts[series.id] = new Chart(ctx, {
     type: "line",
     data: {

@@ -3,7 +3,9 @@
     "start": "1929-10-24",
     "end": "1933-03-04",
     "title": "世界恐慌",
-    "series": ["sp500"],
+    "series": [
+      "sp500"
+    ],
     "source": "Federal Reserve History; NYSE crash week of 24 Oct 1929; US banking holiday March 1933",
     "sourceUrl": "https://www.federalreservehistory.org/essays/great-depression"
   },
@@ -11,7 +13,10 @@
     "start": "1979-10-06",
     "end": "1982-08-17",
     "title": "ボルカー・ショック",
-    "series": ["us10y", "sp500"],
+    "series": [
+      "us10y",
+      "sp500"
+    ],
     "source": "Fed Saturday Night Special 6 Oct 1979; 1980–82 recessions; Aug 1982 bull-market turn",
     "sourceUrl": "https://www.federalreservehistory.org/essays/anti-inflation-measures"
   },
@@ -19,7 +24,9 @@
     "start": "1985-09-22",
     "end": "1988-12-31",
     "title": "プラザ合意後の円高",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "Plaza Accord 22 Sep 1985; subsequent USD/JPY decline through late 1980s",
     "sourceUrl": "https://www.federalreservehistory.org/essays/plaza-accord"
   },
@@ -27,7 +34,11 @@
     "start": "1987-10-19",
     "end": "1987-12-31",
     "title": "ブラックマンデー",
-    "series": ["sp500", "nikkei"],
+    "series": [
+      "sp500",
+      "nikkei",
+      "japan_stock"
+    ],
     "source": "19 Oct 1987 crash; recovery into year-end 1987",
     "sourceUrl": "https://www.federalreservehistory.org/essays/stock-market-crash-of-1987"
   },
@@ -35,7 +46,11 @@
     "start": "1997-07-02",
     "end": "1998-12-31",
     "title": "アジア通貨危機",
-    "series": ["nikkei", "usdjpy"],
+    "series": [
+      "nikkei",
+      "japan_stock",
+      "usdjpy"
+    ],
     "source": "Thai baht float 2 Jul 1997; regional crisis through 1998",
     "sourceUrl": "https://www.federalreservehistory.org/essays/asian-financial-crisis"
   },
@@ -43,7 +58,13 @@
     "start": "2000-03-10",
     "end": "2002-10-31",
     "title": "ITバブル崩壊",
-    "series": ["sp500", "nikkei", "usdjpy", "us10y"],
+    "series": [
+      "sp500",
+      "nikkei",
+      "japan_stock",
+      "usdjpy",
+      "us10y"
+    ],
     "source": "NASDAQ peak 10 Mar 2000; S&P 500 trough Oct 2002; associated FX and rate moves",
     "sourceUrl": "https://www.federalreservehistory.org/essays/stock-market-crash-of-2000-02"
   },
@@ -51,7 +72,9 @@
     "start": "2003-05-19",
     "end": "2003-09-11",
     "title": "イラク戦争後の景気回復期待による金利上昇（2003年）",
-    "series": ["us10y"],
+    "series": [
+      "us10y"
+    ],
     "source": "Easing of Iraq war risk and rising growth expectations; 10Y Treasury yield rise mid-2003",
     "sourceUrl": "https://www.federalreserve.gov/econres/feds/the-effects-of-war-risk-on-us-financial-markets.htm"
   },
@@ -59,7 +82,9 @@
     "start": "2003-08-04",
     "end": "2003-10-29",
     "title": "イラク戦争後の円高リスクオフ（2003年）",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "Post-Iraq-war risk-off yen appreciation amid Middle East uncertainty",
     "sourceUrl": "https://www.federalreserve.gov/econres/feds/the-effects-of-war-risk-on-us-financial-markets.htm"
   },
@@ -67,7 +92,9 @@
     "start": "2004-03-10",
     "end": "2004-06-14",
     "title": "2004年FRB利上げサイクル",
-    "series": ["us10y"],
+    "series": [
+      "us10y"
+    ],
     "source": "FOMC began raising the federal funds rate in June 2004; 10Y yield rise in anticipation",
     "sourceUrl": "https://www.federalreserve.gov/econresdata/notes/feds-notes/2015/effects-of-fomc-communications-before-policy-tightening-in-1994-and-2004-20150924.html"
   },
@@ -75,7 +102,9 @@
     "start": "2005-09-06",
     "end": "2005-12-07",
     "title": "FRB利上げサイクル中の円安（2005年）",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "Fed tightening cycle and dollar strength; yen depreciation in late 2005",
     "sourceUrl": "https://www.federalreserve.gov/econresdata/notes/feds-notes/2015/effects-of-fomc-communications-before-policy-tightening-in-1994-and-2004-20150924.html"
   },
@@ -83,7 +112,9 @@
     "start": "2007-12-14",
     "end": "2008-03-27",
     "title": "サブプライム危機初期の円高",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "Subprime crisis triggers risk-off yen appreciation in late 2007 / early 2008",
     "sourceUrl": "https://www.federalreservehistory.org/essays/financial-crisis-of-2008"
   },
@@ -91,7 +122,13 @@
     "start": "2008-09-15",
     "end": "2009-03-09",
     "title": "リーマン・ショック",
-    "series": ["sp500", "nikkei", "usdjpy", "us10y"],
+    "series": [
+      "sp500",
+      "nikkei",
+      "japan_stock",
+      "usdjpy",
+      "us10y"
+    ],
     "source": "Lehman Brothers bankruptcy 15 Sep 2008; S&P 500 trough 9 Mar 2009",
     "sourceUrl": "https://www.federalreservehistory.org/essays/great-recession-and-its-aftermath"
   },
@@ -99,7 +136,9 @@
     "start": "2009-03-12",
     "end": "2009-06-18",
     "title": "リーマン・ショック後の景気回復期待（2009年）",
-    "series": ["us10y"],
+    "series": [
+      "us10y"
+    ],
     "source": "Risk-on recovery after the financial-crisis trough; 10Y Treasury yield rebound",
     "sourceUrl": "https://www.federalreserve.gov/newsevents/speech/kohn20100513a.htm"
   },
@@ -107,7 +146,10 @@
     "start": "2010-04-23",
     "end": "2012-07-26",
     "title": "欧州債務危機",
-    "series": ["sp500", "us10y"],
+    "series": [
+      "sp500",
+      "us10y"
+    ],
     "source": "First Greek EU/IMF programme request Apr 2010; ECB OMT speech 26 Jul 2012",
     "sourceUrl": "https://www.ecb.europa.eu/press/key/date/2012/html/sp120726.en.html"
   },
@@ -115,7 +157,9 @@
     "start": "2012-09-27",
     "end": "2013-05-23",
     "title": "アベノミクスによる円安",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "BOJ quantitative easing under Abenomics; yen depreciation from late 2012 to mid-2013",
     "sourceUrl": "https://www.bis.org/publ/bppdf/bispap66g.pdf"
   },
@@ -123,7 +167,9 @@
     "start": "2014-08-07",
     "end": "2015-01-21",
     "title": "追加緩和による円安（2014〜15年）",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "BOJ expanded QQE in October 2014; oil-price decline; yen depreciation through early 2015",
     "sourceUrl": "https://www.boj.or.jp/en/mopo/mpmdeci/mpr_2014/k141031a.pdf"
   },
@@ -131,7 +177,10 @@
     "start": "2015-06-24",
     "end": "2017-04-21",
     "title": "チャイナ・ショック（2015）、上海サーキットブレーカー混乱（2016）",
-    "series": ["nikkei"],
+    "series": [
+      "nikkei",
+      "japan_stock"
+    ],
     "source": "Shanghai stock market turbulence summer 2015; China slowdown spillovers to regional equities",
     "sourceUrl": "https://www.uscc.gov/sites/default/files/Research/China%E2%80%99s%20Stock%20Market%20Collapse%20and%20Government%E2%80%99s%20Response.pdf"
   },
@@ -139,7 +188,9 @@
     "start": "2016-08-23",
     "end": "2017-01-19",
     "title": "トランプ景気期待による円安",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "US election 2016 and reflation trade; dollar strength and yen weakness through year-end",
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2017-02-mpr-part2.htm"
   },
@@ -147,7 +198,10 @@
     "start": "2018-01-23",
     "end": "2018-07-05",
     "title": "2018年の日経調整（円高・米金利上昇）",
-    "series": ["nikkei"],
+    "series": [
+      "nikkei",
+      "japan_stock"
+    ],
     "source": "Nikkei correction amid yen appreciation and rising US Treasury yields in early 2018",
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2018-07-mpr-part2.htm"
   },
@@ -155,7 +209,9 @@
     "start": "2018-09-01",
     "end": "2019-01-01",
     "title": "クリスマスショック",
-    "series": ["sp500"],
+    "series": [
+      "sp500"
+    ],
     "source": "S&P 500 correction in Q4 2018 amid Fed rate hikes and trade tensions; also called Christmas Eve massacre",
     "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/2018-07-mpr-part2.htm"
   },
@@ -163,7 +219,13 @@
     "start": "2020-02-19",
     "end": "2020-03-23",
     "title": "コロナショック",
-    "series": ["sp500", "nikkei", "usdjpy", "us10y"],
+    "series": [
+      "sp500",
+      "nikkei",
+      "japan_stock",
+      "usdjpy",
+      "us10y"
+    ],
     "source": "S&P 500 peak 19 Feb 2020; trough 23 Mar 2020",
     "sourceUrl": "https://www.federalreservehistory.org/essays/coronavirus-covid-19-pandemic"
   },
@@ -171,7 +233,10 @@
     "start": "2021-02-16",
     "end": "2021-08-20",
     "title": "コロナ第5波による日経調整（2021年）",
-    "series": ["nikkei"],
+    "series": [
+      "nikkei",
+      "japan_stock"
+    ],
     "source": "Nikkei correction during Japan's fifth COVID-19 wave in 2021 (summer peak of infections; Olympics-period restrictions and supply-chain strain)",
     "sourceUrl": "https://www.imf.org/en/Publications/WEO/Issues/2021/07/27/weo-update-july-2021"
   },
@@ -179,7 +244,11 @@
     "start": "2021-12-01",
     "end": "2023-05-01",
     "title": "2022年ベアマーケット（The Great Tightening）",
-    "series": ["sp500", "nikkei"],
+    "series": [
+      "sp500",
+      "nikkei",
+      "japan_stock"
+    ],
     "source": "Inflation surge and rapid Fed tightening; global equity bear market 2022",
     "sourceUrl": "https://www.federalreserve.gov/publications/2022-ar-monetary-policy.htm"
   },
@@ -187,7 +256,10 @@
     "start": "2022-01-13",
     "end": "2022-11-09",
     "title": "The Great Tightening",
-    "series": ["usdjpy", "us10y"],
+    "series": [
+      "usdjpy",
+      "us10y"
+    ],
     "source": "Inflation surge and Fed hiking cycle from 2022; BOJ YCC kept Japanese yields pinned, widening the US–Japan rate gap. USD/JPY and UST 10Y both advanced in two legs around a mid-year pause. Yen-buying intervention in Sep–Oct 2022 is a separate USD/JPY event, not a driver of the UST move",
     "sourceUrl": "https://www.federalreserve.gov/publications/2022-ar-monetary-policy.htm"
   },
@@ -195,7 +267,9 @@
     "start": "2022-09-22",
     "end": "2022-10-24",
     "title": "24年ぶり円買い介入（2022年）",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "First yen-buying intervention in 24 years on 22 Sep 2022; follow-up around 21–24 Oct 2022",
     "sourceUrl": "https://www.mof.go.jp/english/policy/international_policy/economic_report/"
   },
@@ -203,7 +277,9 @@
     "start": "2023-04-05",
     "end": "2023-06-30",
     "title": "植田和男就任後の円安（2023年）",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "Yen depreciation after BOJ Governor Ueda took office; expectations of continued accommodative policy",
     "sourceUrl": "https://www.bis.org/review/r240503c.htm"
   },
@@ -211,7 +287,9 @@
     "start": "2023-07-13",
     "end": "2023-10-20",
     "title": "米国債供給懸念・ハイヤー・フォー・ロンガー（2023年）",
-    "series": ["us10y"],
+    "series": [
+      "us10y"
+    ],
     "source": "Higher-for-longer Fed policy and Treasury supply concerns; 10Y yield rise H2 2023",
     "sourceUrl": "https://www.federalreserve.gov/econres/notes/feds-notes/the-treasury-tantrum-of-2023-20240903.html"
   },
@@ -219,7 +297,9 @@
     "start": "2024-06-18",
     "end": "2024-07-31",
     "title": "円キャリー積み上がりによる円安（2024年）",
-    "series": ["usdjpy"],
+    "series": [
+      "usdjpy"
+    ],
     "source": "Yen-funded carry build-up; USD/JPY rose through 160 in June–July 2024 as the US–Japan rate gap stayed wide",
     "sourceUrl": "https://www.bis.org/publ/bisbull90.htm"
   },
@@ -227,7 +307,11 @@
     "start": "2024-07-31",
     "end": "2024-08-06",
     "title": "令和のブラックマンデー",
-    "series": ["usdjpy", "nikkei"],
+    "series": [
+      "nikkei",
+      "japan_stock",
+      "usdjpy"
+    ],
     "source": "BOJ hike 31 Jul 2024 and yen carry unwind; Nikkei record one-day drop 5 Aug 2024 (also called Reiwa Black Monday)",
     "sourceUrl": "https://www.bis.org/publ/bisbull90.htm"
   },
@@ -235,15 +319,32 @@
     "start": "2025-02-01",
     "end": "2025-04-01",
     "title": "トランプ関税発動による調整（2025年）",
-    "series": ["sp500"],
+    "series": [
+      "sp500"
+    ],
     "source": "Tariff announcements on Canada, Mexico and China in early 2025; equity market correction",
     "sourceUrl": "https://www.whitehouse.gov/fact-sheets/2025/02/fact-sheet-president-donald-j-trump-imposes-tariffs-on-imports-from-canada-mexico-and-china/"
+  },
+  {
+    "start": "2025-04-02",
+    "end": "2025-04-09",
+    "title": "トランプ関税ショック（2025年4月）",
+    "series": [
+      "sp500",
+      "nikkei",
+      "japan_stock"
+    ],
+    "source": "Trump 'Liberation Day' reciprocal tariffs announced 2 Apr 2025; global equity crash; Nikkei trough 7 Apr; Trump paused most tariffs 9 Apr",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2025_stock_market_crash"
   },
   {
     "start": "2026-02-27",
     "end": "2026-04-02",
     "title": "2026年イラン戦争ショック",
-    "series": ["nikkei"],
+    "series": [
+      "nikkei",
+      "japan_stock"
+    ],
     "source": "US–Israel strikes on Iran from 28 Feb 2026; Hormuz disruption and oil shock; Nikkei was among the hardest-hit major indices",
     "sourceUrl": "https://www.tradingview.com/news/invezz:faaed0905094b:0-from-best-to-worst-how-nikkei-s-2026-rally-collapsed-with-iran-war/"
   },
@@ -251,7 +352,10 @@
     "start": "2026-06-25",
     "end": "2026-08-04",
     "title": "キオクシアショック",
-    "series": ["nikkei"],
+    "series": [
+      "nikkei",
+      "japan_stock"
+    ],
     "source": "Nikkei peak 25 Jun 2026; AI/semiconductor unwind led by Kioxia (limit-down 28 Jul); Nikkei vs TOPIX divergence",
     "sourceUrl": "https://www.reuters.com/world/asia-pacific/japans-nikkei-slides-into-correction-zone-tech-selloff-middle-east-conflict-2026-07-17/"
   }

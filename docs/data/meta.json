@@ -1,5 +1,5 @@
 {
-  "snapshotDate": "2026-08-29",
+  "snapshotDate": "2026-08-31",
   "note": "系列ごとに取得可能な最長期間。補間・つなぎはしない。",
   "sources": [
     {
@@ -25,6 +25,17 @@
       "count": 19189
     },
     {
+      "id": "japan_stock",
+      "name": "日本株価指数（OECD）",
+      "source": "OECD via FRED (SPASTT01JPM661N)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/SPASTT01JPM661N",
+      "license": "FRED 利用規約に従う。出典明示。",
+      "frequency": "monthly",
+      "start": "1959-01-01",
+      "end": "2026-06-01",
+      "count": 810
+    },
+    {
       "id": "usdjpy",
       "name": "ドル円",
       "source": "Board of Governors of the Federal Reserve System via FRED (DEXJPUS)",
@@ -45,6 +56,17 @@
       "start": "1962-01-02",
       "end": "2026-08-27",
       "count": 16149
+    },
+    {
+      "id": "boj_rate",
+      "name": "日銀政策金利",
+      "source": "Organization for Economic Co-operation and Development via FRED (IRSTCB01JPM156N)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/IRSTCB01JPM156N",
+      "license": "FRED 利用規約に従う。出典明示。",
+      "frequency": "monthly",
+      "start": "1960-01-01",
+      "end": "2023-12-01",
+      "count": 768
     }
   ],
   "disclaimer": "本サイトは学習用の歴史的チャートです。投資助言、売買推奨、ポートフォリオ提案ではありません。ライブ価格は表示しません。"

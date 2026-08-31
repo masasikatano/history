@@ -215,6 +215,18 @@ def main() -> int:
         "points": nikkei_points,
     }
 
+    print("Fetching Japan share prices (FRED SPASTT01JPM661N)…")
+    japan_stock_points = fred_observations("SPASTT01JPM661N", fred_key)
+    japan_stock = {
+        "id": "japan_stock",
+        "name": "日本株価指数（OECD）",
+        "frequency": "monthly",
+        "source": "OECD via FRED (SPASTT01JPM661N)",
+        "sourceUrl": "https://fred.stlouisfed.org/series/SPASTT01JPM661N",
+        "license": "FRED 利用規約に従う。出典明示。",
+        "points": japan_stock_points,
+    }
+
     print("Fetching USDJPY (FRED DEXJPUS)…")
     usdjpy_points = fred_observations("DEXJPUS", fred_key)
     usdjpy = {
@@ -239,7 +251,19 @@ def main() -> int:
         "points": us10y_points,
     }
 
-    series_list = [sp, nikkei, usdjpy, us10y]
+    print("Fetching BOJ policy rate (FRED IRSTCB01JPM156N)…")
+    boj_points = fred_observations("IRSTCB01JPM156N", fred_key)
+    boj_rate = {
+        "id": "boj_rate",
+        "name": "日銀政策金利",
+        "frequency": "monthly",
+        "source": "Organization for Economic Co-operation and Development via FRED (IRSTCB01JPM156N)",
+        "sourceUrl": "https://fred.stlouisfed.org/series/IRSTCB01JPM156N",
+        "license": "FRED 利用規約に従う。出典明示。",
+        "points": boj_points,
+    }
+
+    series_list = [sp, nikkei, japan_stock, usdjpy, us10y, boj_rate]
     for s in series_list:
         write_json(DOCS_DATA / f"{s['id']}.json", s)
         start, end = range_of(s["points"])
