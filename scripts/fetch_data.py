@@ -263,7 +263,19 @@ def main() -> int:
         "points": jp10y_points,
     }
 
-    series_list = [sp, nikkei, japan_stock, usdjpy, us10y, jp10y]
+    print("Fetching VIX (FRED VIXCLS)…")
+    vix_points = fred_observations("VIXCLS", fred_key)
+    vix = {
+        "id": "vix",
+        "name": "VIX",
+        "frequency": "daily",
+        "source": "Chicago Board Options Exchange via FRED (VIXCLS)",
+        "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
+        "license": "FRED 利用規約に従う。出典明示。",
+        "points": vix_points,
+    }
+
+    series_list = [sp, nikkei, japan_stock, usdjpy, us10y, jp10y, vix]
     for s in series_list:
         write_json(DOCS_DATA / f"{s['id']}.json", s)
         start, end = range_of(s["points"])

@@ -5,10 +5,12 @@ const THRESHOLDS = {
   fxPct: 0.1,
   yieldWindow: 60,
   yieldBp: 1.0,
+  vixWindow: 60,
+  vixPct: 1.0,
   monthlyWindowEquiv: 3,
 };
 
-const SERIES_ORDER = ["sp500", "nikkei", "japan_stock", "usdjpy", "us10y", "jp10y"];
+const SERIES_ORDER = ["sp500", "nikkei", "japan_stock", "usdjpy", "us10y", "jp10y", "vix"];
 const VIEW_START = "2015-01-01";
 
 function viewStart(_seriesId) {
@@ -149,6 +151,43 @@ function mergeOverlappingEpisodes(episodes) {
   return merged;
 }
 
+function detectVixSpikes(points, frequency) {
+  const w = windowSize(frequency, THRESHOLDS.vixWindow);
+  const out = [];
+  if (points.length <= w) return out;
+
+  let open = null;
+  const flush = () => {
+    if (!open) return;
+    out.push(open);
+    open = null;
+  };
+
+  for (let i = w; i < points.length; i++) {
+    const a = points[i - w];
+    const b = points[i];
+    const change = (b.value - a.value) / a.value;
+    if (change > THRESHOLDS.vixPct) {
+      if (open && a.date <= open.end) {
+        open.end = b.date;
+        if (change > open.magnitude) open.magnitude = change;
+      } else {
+        flush();
+        open = {
+          start: a.date,
+          end: b.date,
+          kind: "surge",
+          magnitude: change,
+        };
+      }
+    } else {
+      flush();
+    }
+  }
+  flush();
+  return mergeOverlappingEpisodes(out);
+}
+
 function detectSeries(series) {
   if (series.id === "sp500" || series.id === "nikkei" || series.id === "japan_stock") {
     return detectDrawdowns(series.points).map((d) => ({ ...d, series: series.id }));
@@ -164,6 +203,9 @@ function detectSeries(series) {
       ...d,
       series: series.id,
     }));
+  }
+  if (series.id === "vix") {
+    return detectVixSpikes(series.points, series.frequency).map((d) => ({ ...d, series: series.id }));
   }
   return [];
 }
@@ -195,6 +237,9 @@ function formatMag(seriesId, mag, kind) {
   if (seriesId === "usdjpy") {
     const sign = mag > 0 ? "+" : "";
     return `約60営業日で ${sign}${(mag * 100).toFixed(1)}%`;
+  }
+  if (seriesId === "vix") {
+    return `約60営業日で +${(mag * 100).toFixed(1)}%`;
   }
   const windowLabel = seriesId === "jp10y" ? "約3ヶ月で" : "約60営業日で";
   const bp = mag * 100;

@@ -67,6 +67,17 @@
       "start": "1989-01-01",
       "end": "2026-06-01",
       "count": 450
+    },
+    {
+      "id": "vix",
+      "name": "VIX",
+      "source": "Chicago Board Options Exchange via FRED (VIXCLS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/VIXCLS",
+      "license": "FRED 利用規約に従う。出典明示。",
+      "frequency": "daily",
+      "start": "1990-01-02",
+      "end": "2026-08-27",
+      "count": 9261
     }
   ],
   "disclaimer": "本サイトは学習用の歴史的チャートです。投資助言、売買推奨、ポートフォリオ提案ではありません。ライブ価格は表示しません。"
