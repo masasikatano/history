@@ -10,7 +10,7 @@ const THRESHOLDS = {
   monthlyWindowEquiv: 3,
 };
 
-const SERIES_ORDER = ["sp500", "nikkei", "japan_stock", "usdjpy", "us10y", "jp10y", "vix"];
+const SERIES_ORDER = ["sp500", "vix", "nikkei", "japan_stock", "usdjpy", "us10y", "jp10y"];
 const VIEW_START = "2015-01-01";
 
 function viewStart(_seriesId) {
