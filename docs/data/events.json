@@ -407,20 +407,19 @@
   },
   {
     "start": "2025-02-01",
-    "end": "2025-04-01",
+    "end": "2025-04-09",
     "title": "トランプ関税ショック（2025）",
     "series": [
       "sp500"
     ],
-    "source": "Tariff announcements on Canada, Mexico and China in early 2025; equity market correction",
-    "sourceUrl": "https://www.whitehouse.gov/fact-sheets/2025/02/fact-sheet-president-donald-j-trump-imposes-tariffs-on-imports-from-canada-mexico-and-china/"
+    "source": "Tariff announcements on Canada, Mexico and China in early 2025; Trump 'Liberation Day' reciprocal tariffs on 2 Apr 2025; S&P 500 correction and partial tariff pause on 9 Apr",
+    "sourceUrl": "https://en.wikipedia.org/wiki/2025_stock_market_crash"
   },
   {
     "start": "2025-04-02",
     "end": "2025-04-09",
     "title": "トランプ関税ショック（2025）",
     "series": [
-      "sp500",
       "nikkei",
       "japan_stock"
     ],
