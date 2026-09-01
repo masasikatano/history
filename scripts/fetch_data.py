@@ -3,12 +3,10 @@
 
 from __future__ import annotations
 
-import csv
-import io
 import json
 import os
 import sys
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -18,10 +16,10 @@ DOCS_DATA = ROOT / "docs" / "data"
 ENV_PATH = ROOT / ".env"
 
 FRED_OBS = "https://api.stlouisfed.org/fred/series/observations"
-SHILLER_URLS = [
-    "http://www.econ.yale.edu/~shiller/data/ie_data.xls",
-    "https://www.econ.yale.edu/~shiller/data/ie_data.xls",
-]
+YAHOO_SP500_URL = (
+    "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC"
+    "?period1=1420070400&period2=9999999999&interval=1d&events=history"
+)
 
 
 def load_env() -> None:
@@ -62,113 +60,36 @@ def fred_observations(series_id: str, api_key: str) -> list[dict]:
     return points
 
 
-def parse_shiller_ie_data(raw: bytes) -> list[dict]:
-    """Parse Shiller ie_data.xls as HTML/XML or tab/csv-ish fallback.
+def fetch_yahoo_sp500() -> list[dict]:
+    """Fetch daily S&P 500 from Yahoo Finance (2015-01-01 onwards).
 
-    Current Yale files are often HTML-exported spreadsheets. We also try
-    comma/tab rows: first numeric YYYY.MM date in col 0 and P in col 1.
+    Yahoo's v8 chart API returns timestamps at US/Eastern market hours.
+    UTC calendar date matches the trading date, so we use that.
     """
-    text = None
-    for enc in ("utf-8", "latin-1"):
-        try:
-            text = raw.decode(enc)
-            break
-        except UnicodeDecodeError:
-            continue
-    if text is None:
-        raise RuntimeError("Could not decode Shiller file")
-
-    points: list[dict] = []
-    # HTML table cells
-    if "<table" in text.lower():
-        import re
-
-        rows = re.findall(r"<tr[^>]*>(.*?)</tr>", text, flags=re.I | re.S)
-        for row in rows:
-            cells = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, flags=re.I | re.S)
-            cells = [re.sub(r"<[^>]+>", "", c).strip() for c in cells]
-            _maybe_append_shiller_row(cells, points)
-        if points:
-            return _dedupe_sort(points)
-
-    reader = csv.reader(io.StringIO(text))
-    for row in reader:
-        _maybe_append_shiller_row(row, points)
-    if not points:
-        # tab-separated
-        reader = csv.reader(io.StringIO(text), delimiter="\t")
-        for row in reader:
-            _maybe_append_shiller_row(row, points)
-    if not points:
-        raise RuntimeError("No S&P price points parsed from Shiller file")
-    return _dedupe_sort(points)
-
-
-def _maybe_append_shiller_row(row: list[str], points: list[dict]) -> None:
-    if len(row) < 2:
-        return
-    date_s = row[0].strip()
-    price_s = row[1].strip().replace(",", "")
-    # YYYY.MM or YYYY.M
-    if not date_s or date_s[0] not in "12":
-        return
-    try:
-        if "." in date_s:
-            y_str, m_str = date_s.split(".", 1)
-            year = int(float(y_str))
-            if m_str.isdigit():
-                month = int(m_str)
-            else:
-                month = int(round(float("0." + m_str) * 100))
-            if month < 1 or month > 12:
-                month = int(round(float(date_s) % 1 * 100))
-        else:
-            return
-        if year < 1800 or year > 2100:
-            return
-        value = float(price_s)
-    except (ValueError, IndexError):
-        return
-    if value <= 0:
-        return
-    points.append({"date": f"{year:04d}-{month:02d}-01", "value": value})
-
-
-def _dedupe_sort(points: list[dict]) -> list[dict]:
-    by_date = {}
-    for p in points:
-        by_date[p["date"]] = p
-    return [by_date[k] for k in sorted(by_date)]
-
-
-def fetch_shiller_sp500() -> list[dict]:
-    last_err = None
-    for url in SHILLER_URLS:
-        try:
-            raw = http_get(url)
-            return parse_shiller_ie_data(raw)
-        except Exception as exc:  # noqa: BLE001
-            last_err = exc
-    # Public CSV mirror (datasets/s-and-p-500): monthly SP500 from 1871
-    mirror = "https://raw.githubusercontent.com/datasets/s-and-p-500/master/data/data.csv"
-    raw = http_get(mirror).decode("utf-8")
+    payload = json.loads(http_get(YAHOO_SP500_URL).decode("utf-8"))
+    result = payload.get("chart", {}).get("result", [None])[0]
+    error = payload.get("chart", {}).get("error")
+    if result is None:
+        raise RuntimeError(f"Yahoo Finance error: {error or payload}")
+    timestamps = result.get("timestamp", [])
+    indicators = result.get("indicators", {})
+    quotes = indicators.get("quote", [{}])[0]
+    adjclose_info = indicators.get("adjclose", [{}])[0]
+    adjclose = adjclose_info.get("adjclose", [])
+    close = quotes.get("close", [])
     points = []
-    reader = csv.DictReader(io.StringIO(raw))
-    for row in reader:
-        ds = row.get("Date") or row.get("date")
-        sp = row.get("SP500") or row.get("P") or row.get("Price")
-        if not ds or not sp:
+    for i, ts in enumerate(timestamps):
+        if adjclose and i < len(adjclose) and adjclose[i] is not None:
+            val = adjclose[i]
+        elif i < len(close) and close[i] is not None:
+            val = close[i]
+        else:
             continue
-        try:
-            value = float(sp)
-        except ValueError:
-            continue
-        if len(ds) == 7:
-            ds = ds + "-01"
-        points.append({"date": ds[:10], "value": value})
-    if points:
-        return _dedupe_sort(points)
-    raise RuntimeError(f"Shiller fetch failed: {last_err}")
+        dt = datetime.fromtimestamp(ts, tz=timezone.utc)
+        points.append({"date": dt.date().isoformat(), "value": float(val)})
+    if not points:
+        raise RuntimeError("No S&P 500 points parsed from Yahoo Finance")
+    return points
 
 
 def write_json(path: Path, obj) -> None:
@@ -191,15 +112,15 @@ def main() -> int:
 
     snapshot = datetime.now(timezone.utc).date().isoformat()
 
-    print("Fetching S&P500 (Shiller monthly, no splice)…")
-    sp_points = fetch_shiller_sp500()
+    print("Fetching S&P500 (Yahoo Finance ^GSPC, daily from 2015)…")
+    sp_points = fetch_yahoo_sp500()
     sp = {
         "id": "sp500",
         "name": "S&P500",
-        "frequency": "monthly",
-        "source": "Robert Shiller, Irrational Exuberance data (S&P Composite)",
-        "sourceUrl": "http://www.econ.yale.edu/~shiller/data.htm",
-        "license": "公開研究データ。再配布時は出典を明示。",
+        "frequency": "daily",
+        "source": "Yahoo Finance (^GSPC)",
+        "sourceUrl": "https://finance.yahoo.com/quote/%5EGSPC/history/",
+        "license": "Yahoo Finance から取得した遅行データ。再利用は各社の利用規約に従う。",
         "points": sp_points,
     }
 

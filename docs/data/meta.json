@@ -1,17 +1,17 @@
 {
-  "snapshotDate": "2026-08-31",
+  "snapshotDate": "2026-09-01",
   "note": "系列ごとに取得可能な最長期間。補間・つなぎはしない。",
   "sources": [
     {
       "id": "sp500",
       "name": "S&P500",
-      "source": "Robert Shiller, Irrational Exuberance data (S&P Composite)",
-      "sourceUrl": "http://www.econ.yale.edu/~shiller/data.htm",
-      "license": "公開研究データ。再配布時は出典を明示。",
-      "frequency": "monthly",
-      "start": "1871-01-01",
-      "end": "2026-07-01",
-      "count": 1867
+      "source": "Yahoo Finance (^GSPC)",
+      "sourceUrl": "https://finance.yahoo.com/quote/%5EGSPC/history/",
+      "license": "Yahoo Finance から取得した遅行データ。再利用は各社の利用規約に従う。",
+      "frequency": "daily",
+      "start": "2015-01-02",
+      "end": "2026-08-31",
+      "count": 2931
     },
     {
       "id": "nikkei",
@@ -21,8 +21,8 @@
       "license": "FRED 利用規約に従う。出典明示。",
       "frequency": "daily",
       "start": "1949-05-16",
-      "end": "2026-08-28",
-      "count": 19189
+      "end": "2026-08-31",
+      "count": 19190
     },
     {
       "id": "japan_stock",
@@ -43,8 +43,8 @@
       "license": "FRED 利用規約に従う。出典明示。",
       "frequency": "daily",
       "start": "1971-01-04",
-      "end": "2026-08-21",
-      "count": 13946
+      "end": "2026-08-28",
+      "count": 13951
     },
     {
       "id": "us10y",
@@ -54,8 +54,8 @@
       "license": "FRED 利用規約に従う。出典明示。",
       "frequency": "daily",
       "start": "1962-01-02",
-      "end": "2026-08-27",
-      "count": 16149
+      "end": "2026-08-28",
+      "count": 16150
     },
     {
       "id": "jp10y",
@@ -76,8 +76,8 @@
       "license": "FRED 利用規約に従う。出典明示。",
       "frequency": "daily",
       "start": "1990-01-02",
-      "end": "2026-08-27",
-      "count": 9261
+      "end": "2026-08-28",
+      "count": 9262
     }
   ],
   "disclaimer": "本サイトは学習用の歴史的チャートです。投資助言、売買推奨、ポートフォリオ提案ではありません。ライブ価格は表示しません。"

@@ -14,13 +14,13 @@
 python3 scripts/fetch_data.py
 ```
 
-`.env` に `FRED_API_KEY` が必要です（コミットしないこと）。日経・ドル円・米10年・日本国債10年物金利・VIX は FRED、S&P500 は Shiller の長期月次を使います。系列の補間やつなぎはしません。定期自動更新はしません。
+`.env` に `FRED_API_KEY` が必要です（コミットしないこと）。日経・ドル円・米10年・日本国債10年物金利・VIX は FRED、S&P500 は Yahoo Finance の日次系列を使います。系列の補間やつなぎはしません。定期自動更新はしません。
 
 ## 出典とライセンス
 
 | 系列 | 出典 | 条件 |
 |------|------|------|
-| S&P500 | [Robert Shiller ie_data](http://www.econ.yale.edu/~shiller/data.htm)（月次、1871年〜） | 公開研究データ。出典明示。 |
+| S&P500 | [Yahoo Finance `^GSPC`](https://finance.yahoo.com/quote/%5EGSPC/history/)（日次、2015年〜） | Yahoo Finance 利用規約に従う。 |
 | 日経平均 | FRED [`NIKKEI225`](https://fred.stlouisfed.org/series/NIKKEI225) | [FRED 利用規約](https://fred.stlouisfed.org/legal/) |
 | 日本株価指数（OECD） | FRED [`SPASTT01JPM661N`](https://fred.stlouisfed.org/series/SPASTT01JPM661N) | 同上 |
 | ドル円 | FRED [`DEXJPUS`](https://fred.stlouisfed.org/series/DEXJPUS) | 同上 |
