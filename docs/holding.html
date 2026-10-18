@@ -10,9 +10,9 @@
     <div class="wrap">
       <header>
         <p class="lead"><a href="index.html">&larr; 長期マクロ履歴へ戻る</a></p>
-        <h1>保有期間別リターン分布（S&amp;P500）</h1>
+        <h1>保有期間別リターン分布</h1>
         <p class="lead">
-          S&amp;P500 の日次データ（サイト内のスナップショット系列）から、買った日を固定して N 営業日間保有した場合のリターン分布を、期間ごとに集計しています。
+          選択した株価指数の日次データ（サイト内のスナップショット系列）から、買った日を固定して N 営業日間保有した場合のリターン分布を、期間ごとに集計しています。
         </p>
         <p class="disclaimer-short">
           記述統計であり、投資助言・売買推奨ではありません。将来のリターンを保証するものではありません。
@@ -21,6 +21,11 @@
 
       <section id="holding">
         <p class="lead">
+          <label for="series-select">系列: </label>
+          <select id="series-select">
+            <option value="sp500">S&amp;P500（ドル建て）</option>
+            <option value="nikkei">日経平均（円建て）</option>
+          </select>
           <label for="start-date">期間: </label>
           <input type="date" id="start-date" value="2025-10-16" />
           〜

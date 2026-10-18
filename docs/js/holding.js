@@ -43,15 +43,21 @@ function fmtPct(x, digits = 1) {
 }
 
 async function main() {
-  const data = await (await fetch("data/sp500.json")).json();
-  const points = data.points;
+  const seriesDefs = {
+    sp500: { name: "S&P500（ドル建て）", data: await (await fetch("data/sp500.json")).json() },
+    nikkei: { name: "日経平均（円建て）", data: await (await fetch("data/nikkei.json")).json() },
+  };
+  let current = "sp500";
   const tbody = document.querySelector("#holding-table tbody");
+  const seriesSelect = document.getElementById("series-select");
   const startInput = document.getElementById("start-date");
   const endInput = document.getElementById("end-date");
   const resetBtn = document.getElementById("reset-range");
   const note = document.getElementById("holding-note");
 
   function render() {
+    const { name, data } = seriesDefs[current];
+    const points = data.points;
     const inRange = points.filter(
       (p) => p.date >= startInput.value && p.date <= endInput.value
     );
@@ -85,23 +91,35 @@ async function main() {
     }
 
     note.textContent =
-      `対象: S&P500 日次、${inRange[0].date} 〜 ${inRange[inRange.length - 1].date}、${inRange.length} 点。` +
+      `対象: ${name}、日次、${inRange[0].date} 〜 ${inRange[inRange.length - 1].date}、${inRange.length} 点。` +
       "窓が短い期間（サンプル数が少ない）や、上昇局面に偏った期間では長期保有が有利に見えるバイアスがあります。";
   }
 
-  startInput.min = points[0].date;
-  startInput.max = points[points.length - 1].date;
-  endInput.min = points[0].date;
-  endInput.max = points[points.length - 1].date;
+  function applySeriesBounds() {
+    const points = seriesDefs[current].data.points;
+    startInput.min = points[0].date;
+    startInput.max = points[points.length - 1].date;
+    endInput.min = points[0].date;
+    endInput.max = points[points.length - 1].date;
+    if (startInput.value < points[0].date) startInput.value = points[0].date;
+    if (endInput.value > points[points.length - 1].date) endInput.value = points[points.length - 1].date;
+  }
 
+  seriesSelect.addEventListener("change", () => {
+    current = seriesSelect.value;
+    applySeriesBounds();
+    render();
+  });
   startInput.addEventListener("change", render);
   endInput.addEventListener("change", render);
   resetBtn.addEventListener("click", () => {
+    const points = seriesDefs[current].data.points;
     startInput.value = points[0].date;
     endInput.value = points[points.length - 1].date;
     render();
   });
 
+  applySeriesBounds();
   render();
 }
 

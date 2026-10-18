@@ -164,13 +164,15 @@ footer h2 {
   margin-top: 2rem;
 }
 
-#holding input[type="date"] {
+#holding input[type="date"],
+#holding select {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 6px;
   color: var(--text);
   padding: 0.3rem 0.5rem;
   font: inherit;
+  margin-right: 0.5rem;
 }
 
 #holding button {
