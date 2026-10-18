@@ -159,3 +159,39 @@ footer h2 {
 .disclaimer-full {
   white-space: pre-wrap;
 }
+
+#holding {
+  margin-top: 2rem;
+}
+
+#holding input[type="date"] {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 0.3rem 0.5rem;
+  font: inherit;
+}
+
+#holding button {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  font: inherit;
+  margin-left: 0.5rem;
+}
+
+#holding button:hover {
+  border-color: var(--accent);
+}
+
+#holding-table td {
+  text-align: right;
+}
+
+#holding-table td:first-child {
+  text-align: left;
+}

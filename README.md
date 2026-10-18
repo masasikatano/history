@@ -8,6 +8,20 @@
 
 リポジトリ設定で公開ディレクトリを `/docs` にしてください。閲覧時に外部 API は呼びません。
 
+## ローカルでの確認
+
+静的ファイルなので `docs/` 配下を任意の HTTP サーバで配信すれば表示できます。
+
+```bash
+cd docs
+python3 -m http.server 8000
+```
+
+- トップ: http://localhost:8000/index.html
+- 保有期間別リターン分布（S&P500）: http://localhost:8000/holding.html
+
+`file://` で直接開くと JSON の `fetch` がブラウザにブロックされて表示できないため、必ず HTTP 経由で開いてください。
+
 ## データの取り直し
 
 ```bash

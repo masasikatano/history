@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>保有期間別リターン分布 | 長期マクロ履歴</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="lead"><a href="index.html">&larr; 長期マクロ履歴へ戻る</a></p>
+        <h1>保有期間別リターン分布（S&amp;P500）</h1>
+        <p class="lead">
+          S&amp;P500 の日次データ（サイト内のスナップショット系列）から、買った日を固定して N 営業日間保有した場合のリターン分布を、期間ごとに集計しています。
+        </p>
+        <p class="disclaimer-short">
+          記述統計であり、投資助言・売買推奨ではありません。将来のリターンを保証するものではありません。
+        </p>
+      </header>
+
+      <section id="holding">
+        <p class="lead">
+          <label for="start-date">期間: </label>
+          <input type="date" id="start-date" value="2025-10-16" />
+          〜
+          <input type="date" id="end-date" value="2026-10-16" />
+          <button type="button" id="reset-range">全期間</button>
+        </p>
+        <table class="series-table" id="holding-table">
+          <thead>
+            <tr>
+              <th>保有期間</th>
+              <th>サンプル数</th>
+              <th>中央値</th>
+              <th>平均</th>
+              <th>プラスの割合</th>
+              <th>最良</th>
+              <th>最悪</th>
+              <th>5%tile</th>
+              <th>95%tile</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="lead" id="holding-note"></p>
+      </section>
+
+      <footer>
+        <h2>集計の注意</h2>
+        <p>
+          全開始日についてオーバーラップありのローリング窓で計算しています。サンプル間は独立ではなく、期間ごとのサンプル数も異なるため、「プラスの割合」の桁の細かい差は過剰に解釈しないでください。
+        </p>
+        <h2>免責</h2>
+        <p class="disclaimer-full">
+本ページは記述統計です。投資助言、推奨配分、売買シグナルではありません。表示はスナップショット時点の公開系列であり、ライブ価格ではありません。利用は自己責任です。
+        </p>
+      </footer>
+    </div>
+    <script src="js/holding.js"></script>
+  </body>
+</html>
