@@ -42,6 +42,30 @@ function fmtPct(x, digits = 1) {
   return x == null ? "—" : `${(x * 100).toFixed(digits)}%`;
 }
 
+function returnStatsByWeekday(points, days) {
+  const byDay = [[], [], [], [], [], [], []];
+  for (let i = 0; i + days < points.length; i += 1) {
+    const dow = new Date(`${points[i].date}T00:00:00`).getDay();
+    byDay[dow].push(points[i + days].value / points[i].value - 1);
+  }
+  return byDay.map((rets) => {
+    if (!rets.length) return null;
+    const sorted = [...rets].sort((a, b) => a - b);
+    const sum = rets.reduce((acc, r) => acc + r, 0);
+    const positive = rets.filter((r) => r > 0).length;
+    return {
+      count: rets.length,
+      median: percentile(sorted, 0.5),
+      mean: sum / rets.length,
+      positiveRatio: positive / rets.length,
+      best: sorted[sorted.length - 1],
+      worst: sorted[0],
+      p5: percentile(sorted, 0.05),
+      p95: percentile(sorted, 0.95),
+    };
+  });
+}
+
 async function main() {
   const seriesDefs = {
     sp500: { name: "S&P500（ドル建て）", data: await (await fetch("data/sp500.json")).json() },
@@ -54,6 +78,27 @@ async function main() {
   const endInput = document.getElementById("end-date");
   const resetBtn = document.getElementById("reset-range");
   const note = document.getElementById("holding-note");
+  const weekdayTbody = document.querySelector("#weekday-table tbody");
+  const WEEKDAY_LABELS = ["日", "月", "火", "水", "木", "金", "土"];
+
+  function fillRow(tr, label, s) {
+    const cells = [
+      label,
+      s ? String(s.count) : "—",
+      s ? fmtPct(s.median) : "—",
+      s ? fmtPct(s.mean) : "—",
+      s ? fmtPct(s.positiveRatio) : "—",
+      s ? fmtPct(s.best) : "—",
+      s ? fmtPct(s.worst) : "—",
+      s ? fmtPct(s.p5) : "—",
+      s ? fmtPct(s.p95) : "—",
+    ];
+    for (const c of cells) {
+      const td = document.createElement("td");
+      td.textContent = c;
+      tr.appendChild(td);
+    }
+  }
 
   function render() {
     const { name, data } = seriesDefs[current];
@@ -62,6 +107,7 @@ async function main() {
       (p) => p.date >= startInput.value && p.date <= endInput.value
     );
     tbody.textContent = "";
+    weekdayTbody.textContent = "";
 
     if (inRange.length < 2) {
       note.textContent = "期間内のデータが不足しています。日付の範囲を広げてください。";
@@ -71,23 +117,16 @@ async function main() {
     for (const period of HOLDING_PERIODS) {
       const s = holdingPeriodStats(inRange, period.days);
       const tr = document.createElement("tr");
-      const cells = [
-        period.label,
-        s ? String(s.count) : "—",
-        s ? fmtPct(s.median) : "—",
-        s ? fmtPct(s.mean) : "—",
-        s ? fmtPct(s.positiveRatio) : "—",
-        s ? fmtPct(s.best) : "—",
-        s ? fmtPct(s.worst) : "—",
-        s ? fmtPct(s.p5) : "—",
-        s ? fmtPct(s.p95) : "—",
-      ];
-      for (const c of cells) {
-        const td = document.createElement("td");
-        td.textContent = c;
-        tr.appendChild(td);
-      }
+      fillRow(tr, period.label, s);
       tbody.appendChild(tr);
+    }
+
+    const oneWeek = HOLDING_PERIODS[0].days;
+    const byWeekday = returnStatsByWeekday(inRange, oneWeek);
+    for (let dow = 1; dow <= 5; dow += 1) {
+      const tr = document.createElement("tr");
+      fillRow(tr, WEEKDAY_LABELS[dow], byWeekday[dow]);
+      weekdayTbody.appendChild(tr);
     }
 
     note.textContent =

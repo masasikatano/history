@@ -194,6 +194,11 @@ footer h2 {
   text-align: right;
 }
 
+.weekday-title {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
 #holding-table td:first-child {
   text-align: left;
 }
