@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>季節性効果の検証 | 長期マクロ履歴</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <p class="lead"><a href="index.html">&larr; 長期マクロ履歴へ戻る</a></p>
+        <h1>季節性効果の検証（1月効果・ハロウィン効果・Sell in May）</h1>
+        <p class="lead">
+          選択した株価指数の日次データ（サイト内のスナップショット系列）から非重複の月次リターンを作り、
+          「1月は他の月より強いか」「11-4月は5-10月より強いか（= ハロウィン効果 / Sell in May）」を
+          統計検定で確認します。
+        </p>
+        <p class="disclaimer-short">
+          記述統計であり、投資助言・売買推奨ではありません。将来のリターンを保証するものではありません。
+        </p>
+      </header>
+
+      <section id="seasonality">
+        <p class="lead">
+          <label for="series-select">系列: </label>
+          <select id="series-select">
+            <option value="sp500">S&amp;P500（ドル建て）</option>
+            <option value="nikkei">日経平均（円建て）</option>
+          </select>
+          <label for="start-date">期間: </label>
+          <input type="date" id="start-date" value="2024-10-17" />
+          〜
+          <input type="date" id="end-date" value="2026-10-17" />
+          <button type="button" id="reset-range">全期間</button>
+        </p>
+
+        <h2 class="weekday-title">検定結果サマリー</h2>
+        <p class="lead" id="summary"></p>
+
+        <h2 class="weekday-title">検定の詳細</h2>
+        <table class="series-table" id="test-table">
+          <thead>
+            <tr>
+              <th>比較</th>
+              <th>サンプル数</th>
+              <th>平均差</th>
+              <th>t検定 p値</th>
+              <th>Mann-Whitney p値</th>
+              <th>平均差の95%CI（ブートストラップ）</th>
+              <th>等価性判定（TOST）</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="lead">
+          「差がない」ことを示すには、単に p &gt; 0.05 では不十分です。そこで
+          平均差の95%信頼区間が等価域（月次 ±2%、半年 ±4%）内に入るかを併記しています。
+          信頼区間が等価域内に入れば「実用上の差は小さい」とみなせます。
+        </p>
+
+        <h2 class="weekday-title">月別リターンの記述統計</h2>
+        <table class="series-table" id="month-table">
+          <thead>
+            <tr>
+              <th>月</th>
+              <th>サンプル数</th>
+              <th>平均</th>
+              <th>中央値</th>
+              <th>プラスの割合</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <p class="lead" id="seasonality-note"></p>
+        <p class="lead">
+          月別の細かい差は過剰に解釈しないでください。1月だけを抜いて検定する点、
+          12ヶ月分の記述統計を見る点で、多重検定の影響があります。
+          また月次サンプル数は数十年に満たず、検出力が低いため、
+          「検出されない」ことは「差がまったくない」とは限りません。
+        </p>
+      </section>
+
+      <footer>
+        <h2>集計の注意</h2>
+        <p>
+          月次リターンは非重複（各月を1回だけカウント）です。ハロウィン効果の検定は、
+          暦年ごとに「前年11月〜当年4月」の6ヶ月複利リターンと「当年5月〜10月」の6ヶ月複利リターンを
+          1組として比較しています。t 検定の p 値は正規近似、Mann-Whitney U 検定も正態近似です。
+          ブートストラップ信頼区間は 10,000 回の再標本化です。
+        </p>
+        <h2>免責</h2>
+        <p class="disclaimer-full">
+本ページは記述統計と統計検定の実演です。投資助言、推奨配分、売買シグナルではありません。表示はスナップショット時点の公開系列であり、ライブ価格ではありません。利用は自己責任です。
+        </p>
+      </footer>
+    </div>
+    <script src="js/seasonality.js"></script>
+  </body>
+</html>

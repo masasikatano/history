@@ -1,5 +1,5 @@
 {
-  "snapshotDate": "2026-10-18",
+  "snapshotDate": "2026-10-19",
   "note": "系列ごとに取得可能な最長期間。補間・つなぎはしない。",
   "sources": [
     {
@@ -21,8 +21,8 @@
       "license": "FRED 利用規約に従う。出典明示。",
       "frequency": "daily",
       "start": "1949-05-16",
-      "end": "2026-10-16",
-      "count": 19220
+      "end": "2026-10-19",
+      "count": 19221
     },
     {
       "id": "japan_stock",
