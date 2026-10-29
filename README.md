@@ -24,11 +24,32 @@ python3 -m http.server 8000
 
 ## データの取り直し
 
+相場系列を公開ソースの最新値にするには、リポジトリ直下で次を実行します。
+
 ```bash
 python3 scripts/fetch_data.py
 ```
 
-`.env` に `FRED_API_KEY` が必要です（コミットしないこと）。日経・ドル円・米10年・日本国債10年物金利・VIX は FRED、S&P500 は Yahoo Finance の日次系列を使います。系列の補間やつなぎはしません。定期自動更新はしません。
+スクリプトは標準ライブラリだけで動きます。`requirements.txt` の `requests` は不要です。
+
+1. [FRED の API キー](https://fredaccount.stlouisfed.org/apikeys) を取り、リポジトリ直下の `.env` に `FRED_API_KEY=あなたのキー` と書く。`.env` はコミットしない。
+2. 上のコマンドを実行する。
+3. 標準出力の `start → end` と、`docs/data/meta.json` の `snapshotDate` を確認する。
+
+上書きされるファイルは次のとおりです。
+
+- `docs/data/sp500.json` — Yahoo Finance `^GSPC`。2015-01-01 以降の日次
+- `docs/data/nikkei.json` — FRED `NIKKEI225`
+- `docs/data/japan_stock.json` — FRED `SPASTT01JPM661N`（月次）
+- `docs/data/usdjpy.json` — FRED `DEXJPUS`
+- `docs/data/us10y.json` — FRED `DGS10`
+- `docs/data/jp10y.json` — FRED `IRLTLT01JPM156N`（月次）
+- `docs/data/vix.json` — FRED `VIXCLS`
+- `docs/data/meta.json` — 取得日と各系列の開始・終了・件数
+
+`events.json` が既にあれば残します。無いときだけ既定の事件リストを書きます。系列の補間やつなぎはしません。月次系列と FRED の日次系列は、公表ラグで取得日まで届かないことがあります。
+
+GitHub Pages に出すときは `docs/data/` の変更をコミットして push します。定期自動更新はしません。表示の確認は「ローカルでの確認」のとおりです。
 
 ## 出典とライセンス
 
